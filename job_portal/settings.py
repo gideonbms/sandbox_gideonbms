@@ -137,11 +137,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'job_portal/static'),
-]
-
 STATIC_ROOT = 'home/algo/job_portal/static'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
