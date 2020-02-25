@@ -25,18 +25,18 @@ SECRET_KEY = '4^fw*wh7gw+ek$ipnlp+#bf1py$$d2vobji-7!&5(9v1ifzuu3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['psandbox.pythonanywhere.com']
 
 # Email Settings
 
 
 SEND_GRID_API_KEY = ''
 EMAIL_HOST = 'smtp.mail.yahoo.com'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = '' #yahoomail password
+EMAIL_HOST_USER = 'ogunniyegideon@yahoo.com'
+EMAIL_HOST_PASSWORD = 'oluwaseun22' #yahoomail password
 EMAIL_PORT = 465
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'gideonbms@yahoo.com' #yahoomail username
+DEFAULT_FROM_EMAIL = 'ogunniyegideon@yahoo.com' #yahoomail username
 ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Feedback email from Algorithm Playground Experiment'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
