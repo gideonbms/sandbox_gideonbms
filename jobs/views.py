@@ -104,7 +104,7 @@ def job_single(request, id):
 
 def apply_job(request):
     if request.method == "POST":
-        form = JobApplyForm(request.POST )
+        form = JobApplyForm(request.POST, request.FILES )
 
         if form.is_valid():
             user = form.save(commit=False)
@@ -112,8 +112,8 @@ def apply_job(request):
             user_email = form.cleaned_data.get('email')
             user.save()
 
-            subject = "Contact form Received"
-            message = user_name , "Your application received.Please send CV via this Email"
+            subject = "Application Received"
+            message = user_name , "Your application received. Thanks"
             email = EmailMessage(subject, message, [user_email])
             email.send()
             return redirect('/')
@@ -136,3 +136,26 @@ class SearchView(ListView):
                                          employment_status__contains=self.request.GET['employment_status'])
 
 
+#class ApplicantPerJobView(ListView):
+    #model = Applicant
+    #template_name = 'jobs/applicants.html'
+    #context_object_name = 'applicants'
+    #paginate_by = 1
+
+    
+    #def dispatch(self, request, *args, **kwargs):
+        #return super().dispatch(self.request, *args, **kwargs)
+
+    #def get_queryset(self):
+        #return Applicant.objects.filter(joblisting_id=self.kwargs['joblisting_id']).order_by('id')
+
+    #def get_context_data(self, **kwargs):
+        #context = super().get_context_data(**kwargs)
+        #context['joblisting'] = JobListing.objects.get(id=self.kwargs['joblisting_id'])
+        #return context
+
+class ApplicantsListView(ListView):
+    model = ApplyJob
+    context_object_name = 'all_applicants'
+
+    

@@ -62,14 +62,29 @@ class JobListing(models.Model):
     def get_absolute_url(self):
         return reverse("jobs:job-single", args=[self.id])
         
+STATUS_CHOICES = (
+    ('NEW', 'Entry Level'),
+    ('EX', 'Experienced'),
+)
 
+PRIORITY_CHOICES = (
+    ('I', 'Available Immediately - 2 to 4 weeks'),
+    ('N', 'Normal Availability - 1 to 3 Months'),
+    ('U', 'Unsure - Undecided'),
+)
 
 class ApplyJob(models.Model):
-    name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=100, default='')
+    last_name = models.CharField(max_length=100, default='')
+    phone = models.CharField(max_length=30, blank=True)
     email = models.EmailField()
-
+    web = models.URLField(blank=True)
+    entry_status = models.CharField(max_length=20, choices=STATUS_CHOICES, blank=True)
+    availability = models.CharField(max_length=40, choices=PRIORITY_CHOICES, blank=True)
+    cv_file = models.FileField(upload_to='uploads/', blank=True)
+    resume = models.TextField(blank=True)
 
     def __str__(self):
-        return self.name
+       return str(self.id)
 
-        
+

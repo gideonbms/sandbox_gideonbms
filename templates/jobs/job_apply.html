@@ -16,7 +16,13 @@
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <input type="submit" value="POST" class="btn btn-primary btn-md text-white">
+                  <input type="submit" value="POST">
+                  {% if submitted %}
+                    <p class="success">
+                         Your application was submitted successfully. Thank you.
+                    </p>
+                  {% endif %}
+
                 </div>
               </div>
 

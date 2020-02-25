@@ -28,5 +28,5 @@ class JobApplyForm(forms.ModelForm):
     class Meta:
         model = ApplyJob
         fields = [
-            'name', 'email'
+            'first_name', 'last_name', 'phone', 'email', 'web', 'entry_status', 'availability', 'cv_file', 'resume'
         ]

@@ -25,7 +25,7 @@ SECRET_KEY = '4^fw*wh7gw+ek$ipnlp+#bf1py$$d2vobji-7!&5(9v1ifzuu3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['algo.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Email Settings
 
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'accounts',
     'jobs',
     'crispy_forms',
+    
 
 ]
 
