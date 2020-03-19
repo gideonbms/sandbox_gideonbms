@@ -53,6 +53,7 @@ def contact(request):
         'form': form
     }
     return render(request, "jobs/contact.html", context)
+    
 
 
 @login_required
@@ -119,7 +120,8 @@ def apply_job(request):
             return redirect('/')
     else:
         form = JobApplyForm()
-
+        if 'submitted' in request.GET:
+            submitted = True
 
     return render(request, "jobs/job_apply.html", {'form': form})
 
@@ -136,26 +138,43 @@ class SearchView(ListView):
                                          employment_status__contains=self.request.GET['employment_status'])
 
 
-#class ApplicantPerJobView(ListView):
-    #model = Applicant
-    #template_name = 'jobs/applicants.html'
-    #context_object_name = 'applicants'
-    #paginate_by = 1
-
-    
-    #def dispatch(self, request, *args, **kwargs):
-        #return super().dispatch(self.request, *args, **kwargs)
-
-    #def get_queryset(self):
-        #return Applicant.objects.filter(joblisting_id=self.kwargs['joblisting_id']).order_by('id')
-
-    #def get_context_data(self, **kwargs):
-        #context = super().get_context_data(**kwargs)
-        #context['joblisting'] = JobListing.objects.get(id=self.kwargs['joblisting_id'])
-        #return context
 
 class ApplicantsListView(ListView):
     model = ApplyJob
-    context_object_name = 'all_applicants'
+    template_name = 'jobs/service/applyjob_list.html'
+    context_object_name = 'all_applyjob'
+    
+
+class ApplicantPerLocationView(ListView):
+    model = ApplyJob
+    template_name = 'jobs/service/applyjob_location.html'
+    context_object_name = 'all_applyjob'
+    queryset = ApplyJob.objects.order_by('location')
+
+class ApplicantPerEducationView(ListView):
+    model = ApplyJob
+    template_name = 'jobs/service/applyjob_education.html'
+    context_object_name = 'all_applyjob'
+    queryset = ApplyJob.objects.order_by('education')
+
+class ApplicantPerExperienceView(ListView):
+    model = ApplyJob
+    template_name = 'jobs/service/applyjob_experience.html'
+    context_object_name = 'all_applyjob'
+    queryset = ApplyJob.objects.order_by('experience')
+
+class ApplicantPerEmployerView(ListView):
+    model = ApplyJob
+    template_name = 'jobs/service/applyjob_exmployer.html'
+    context_object_name = 'all_applyjob'
+    queryset = ApplyJob.objects.order_by('experience', 'education')
+
+
+
+
+    
+    
+
+
 
     

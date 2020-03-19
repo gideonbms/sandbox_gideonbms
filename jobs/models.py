@@ -2,18 +2,20 @@ from django.db import models
 from django.urls import reverse
 from django.conf import settings
 from django.utils import timezone
+#from accounts.models import User
+
 
 
 
 class Contact(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100, blank=True)
+    last_name = models.CharField(max_length=100, blank=True)
     Email = models.EmailField()
     subject = models.CharField(max_length=100)
     message = models.TextField()
 
     def __str__(self):
-        return self.first_name
+        return self.Email
 
 
 JOB_TYPE = (
@@ -62,15 +64,31 @@ class JobListing(models.Model):
     def get_absolute_url(self):
         return reverse("jobs:job-single", args=[self.id])
         
-STATUS_CHOICES = (
-    ('NEW', 'Entry Level'),
-    ('EX', 'Experienced'),
+EDUCATION_CHOICES = (
+    (1, 'PhD'),
+    (2, 'Master Degree'),
+    (3, 'Bachelor Degree'),
+    (4, 'Undergraduate'),
 )
 
-PRIORITY_CHOICES = (
-    ('I', 'Available Immediately - 2 to 4 weeks'),
-    ('N', 'Normal Availability - 1 to 3 Months'),
-    ('U', 'Unsure - Undecided'),
+LOCATION_CHOICES = (
+    (1, '5 to 99 miles away'),
+    (2, '100 to 299 miles away'),
+    (3, '300 to 399 miles away'),
+    (4, '400 to 499 miles away'),
+    (5, '500 to 599 miles away'),
+    (6, '600 to 999 miles away'),
+    (7, '1000 and above miles away'),
+)
+
+EXPERIENCE_CHOICES = (
+    (1, 'Super experienced 11 years and above'),
+    (2, 'Very experienced 9 to 10 years'),
+    (3, 'Experienced 6 to 8 years'),
+    (4, 'Moderate Experience 3 to 5 years'),
+    (5, 'New 1 to 2 years'),
+    (6, 'No Experience 0 to 1 year'),
+
 )
 
 class ApplyJob(models.Model):
@@ -79,12 +97,13 @@ class ApplyJob(models.Model):
     phone = models.CharField(max_length=30, blank=True)
     email = models.EmailField()
     web = models.URLField(blank=True)
-    entry_status = models.CharField(max_length=20, choices=STATUS_CHOICES, blank=True)
-    availability = models.CharField(max_length=40, choices=PRIORITY_CHOICES, blank=True)
+    education = models.IntegerField(choices=EDUCATION_CHOICES, default='')
+    experience = models.IntegerField(choices=EXPERIENCE_CHOICES, default='')
+    location = models.IntegerField(choices=LOCATION_CHOICES, default='')
     cv_file = models.FileField(upload_to='uploads/', blank=True)
     resume = models.TextField(blank=True)
 
     def __str__(self):
-       return str(self.id)
+       return str(self.last_name)
 
 

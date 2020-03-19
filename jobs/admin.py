@@ -1,8 +1,11 @@
 from django.contrib import admin
 from .models import *
 
+class ApplyJobAdmin(admin.ModelAdmin):
+    list_display = ('id', 'last_name', 'experience', 'education', 'location')
+    list_filter = ('experience', 'education', 'location')
+
 admin.site.register(Contact)
 admin.site.register(JobListing)
-admin.site.register(ApplyJob)
-
+admin.site.register(ApplyJob, ApplyJobAdmin)
 
