@@ -25,7 +25,7 @@ SECRET_KEY = '4^fw*wh7gw+ek$ipnlp+#bf1py$$d2vobji-7!&5(9v1ifzuu3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['algo.pythonanywhere.com']
+ALLOWED_HOSTS = ['psandbox.pythonanywhere.com']
 
 # Email Settings
 
@@ -138,7 +138,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'home/algo/job_portal/static'
+STATIC_ROOT = 'home/psandbox/job_portal/static'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
