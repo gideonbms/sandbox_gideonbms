@@ -10,9 +10,9 @@ from django.utils import timezone
 class Contact(models.Model):
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
-    Email = models.EmailField()
+    Email = models.EmailField(blank=True)
     subject = models.CharField(max_length=100)
-    message = models.TextField()
+    feedback = models.TextField()
 
     def __str__(self):
         return self.Email
@@ -33,20 +33,12 @@ CATEGORY = (
     ('Marketing', 'Marketing'),
 )
 
-GENDER = (
-    ('Male', 'Male'),
-    ('Female', 'Female'),
-    ('Any', 'Any'),
-)
-
-
 class JobListing(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     company_name = models.CharField(max_length=200)
     employment_status = models.CharField(choices=JOB_TYPE, max_length=10)
     vacancy = models.CharField(max_length=10, null=True)
-    gender = models.CharField(choices=GENDER, max_length=30, null=True)
     category = models.CharField(choices=CATEGORY, max_length =30)
     description = models.TextField()
     responsibilities = models.TextField()
@@ -65,29 +57,29 @@ class JobListing(models.Model):
         return reverse("jobs:job-single", args=[self.id])
         
 EDUCATION_CHOICES = (
-    (1, 'PhD'),
-    (2, 'Master Degree'),
-    (3, 'Bachelor Degree'),
-    (4, 'Undergraduate'),
+    (40, 'PhD'),
+    (30, 'Master Degree'),
+    (20, 'Bachelor Degree'),
+    (10, 'Undergraduate'),
 )
 
 LOCATION_CHOICES = (
-    (1, '5 to 99 miles away'),
-    (2, '100 to 299 miles away'),
-    (3, '300 to 399 miles away'),
-    (4, '400 to 499 miles away'),
-    (5, '500 to 599 miles away'),
-    (6, '600 to 999 miles away'),
-    (7, '1000 and above miles away'),
+    (70, '5 to 99 miles away'),
+    (60, '100 to 299 miles away'),
+    (50, '300 to 399 miles away'),
+    (40, '400 to 499 miles away'),
+    (30, '500 to 599 miles away'),
+    (20, '600 to 999 miles away'),
+    (10, '1000 and above miles away'),
 )
 
 EXPERIENCE_CHOICES = (
-    (1, 'Super experienced 11 years and above'),
-    (2, 'Very experienced 9 to 10 years'),
-    (3, 'Experienced 6 to 8 years'),
-    (4, 'Moderate Experience 3 to 5 years'),
-    (5, 'New 1 to 2 years'),
-    (6, 'No Experience 0 to 1 year'),
+    (60, 'Super experienced 11 years and above'),
+    (50, 'Very experienced 9 to 10 years'),
+    (40, 'Experienced 6 to 8 years'),
+    (30, 'Moderate Experience 3 to 5 years'),
+    (20, 'New 1 to 2 years'),
+    (10, 'No Experience 0 to 1 year'),
 
 )
 

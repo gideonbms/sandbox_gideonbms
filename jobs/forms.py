@@ -10,7 +10,7 @@ class ContactForm(forms.ModelForm):
             'last_name',
             'Email',
             'subject',
-            'message'
+            'feedback'
         ]
 
 
@@ -18,7 +18,7 @@ class JobListingForm(forms.ModelForm):
     class Meta:
         model = JobListing
         fields = [
-            'user','title', 'company_name', 'employment_status', 'vacancy', 'gender','category',
+            'user','title', 'company_name', 'employment_status', 'vacancy', 'category',
             'description', 'responsibilities', 'experience', 'job_location', 'Salary',
             'image', 'application_deadline', 'published_on'
         ]

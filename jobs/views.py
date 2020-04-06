@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
+from django.db.models import F, Sum
 from .forms import *
 from .models import *
 from django.template.loader import get_template
@@ -104,6 +105,7 @@ def job_single(request, id):
     return render(request, "jobs/job_single.html", context)
 
 def apply_job(request):
+
     if request.method == "POST":
         form = JobApplyForm(request.POST, request.FILES )
 
@@ -149,25 +151,20 @@ class ApplicantPerLocationView(ListView):
     model = ApplyJob
     template_name = 'jobs/service/applyjob_location.html'
     context_object_name = 'all_applyjob'
-    queryset = ApplyJob.objects.order_by('location')
+    queryset = ApplyJob.objects.order_by('-location', '-experience', '-education')
 
 class ApplicantPerEducationView(ListView):
     model = ApplyJob
     template_name = 'jobs/service/applyjob_education.html'
     context_object_name = 'all_applyjob'
-    queryset = ApplyJob.objects.order_by('education')
+    queryset = ApplyJob.objects.order_by('-education', '-experience', '-location')
 
 class ApplicantPerExperienceView(ListView):
     model = ApplyJob
     template_name = 'jobs/service/applyjob_experience.html'
     context_object_name = 'all_applyjob'
-    queryset = ApplyJob.objects.order_by('experience')
+    queryset = ApplyJob.objects.order_by('-experience', '-education', '-location')
 
-class ApplicantPerEmployerView(ListView):
-    model = ApplyJob
-    template_name = 'jobs/service/applyjob_exmployer.html'
-    context_object_name = 'all_applyjob'
-    queryset = ApplyJob.objects.order_by('experience', 'education')
 
 
 

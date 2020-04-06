@@ -22,9 +22,5 @@ urlpatterns = [
     path('service/service-single3.html/', ApplicantPerEducationView.as_view(), name='algorithm-3'),
     path('service/applyjob_experience/', ApplicantPerExperienceView.as_view(), name='algorithm-experience'),
     path('service/service-single4.html/', ApplicantPerExperienceView.as_view(), name='algorithm-4'),
-    path('service/applyjob_employer/', ApplicantPerEmployerView.as_view(), name='algorithm-employer'),
-    path('service/service-single5.html/', ApplicantPerEmployerView.as_view(), name='algorithm-5'),
-
-
- 
+     
 ]

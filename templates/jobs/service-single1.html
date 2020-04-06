@@ -28,19 +28,24 @@
     <table width="100%" cellspacing="2px" style="border-spacing: 10px;">
             <tr>
                 <th>ID</th><th> First Name </th>
-                <th>Last Name</th><th>Email</th>
+                <th>Last Name</th><th>Experience Score</th>
+                <th>Education Score</th><th>Location Score</th><th>Email</th>
             </tr>
         {% for applyjob in all_applyjob %}
             <tr >
-                <td><a href="applyjob/{{ applyjob.id }}">{{ applyjob.id }}</a></td>
+                <td><a href="list/{{ applyjob.id }}">{{ applyjob.id }}</a></td>
                 <td>{{ applyjob.first_name }}</td>
                 <td>{{ applyjob.last_name }}</td>
+                <td>{{ applyjob.experience}}</td>
+                <td>{{ applyjob.education}}</td>
+                <td>{{ applyjob.location}}</td>
                 <td>{{ applyjob.email}}</td>
+
             </tr>
 
         {% endfor %}
-    </div>
     </table>
+    </div>
 </section>
 
 {% endblock %}

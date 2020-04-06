@@ -10,8 +10,6 @@
        <div class="col-md-12">
          <div class="mb-5 text-center">
            <h1 class="text-white font-weight-bold"> Algorithm 4</h1>
-           <p> The implemented algorithms ranks job applicants based on some specified parameters. </p>
-           <p> The algorithms allow a job employer to specify/change parameters that are relevant for applicants' ranking.</p>
          </div>
        </div>
      </div>
@@ -32,19 +30,24 @@
     <table width="100%" cellspacing="2px" style="border-spacing: 10px;">
             <tr>
                 <th>ID</th><th> First Name </th>
-                <th>Last Name</th><th>Email</th>
+                <th>Last Name</th><th>Experience Score</th>
+                <th>Education Score</th><th>Location Score</th><th>Email</th>
             </tr>
         {% for applyjob in all_applyjob %}
             <tr >
                 <td><a href="experience/{{ applyjob.id }}">{{ applyjob.id }}</a></td>
                 <td>{{ applyjob.first_name }}</td>
                 <td>{{ applyjob.last_name }}</td>
+                <td>{{ applyjob.experience}}</td>
+                <td>{{ applyjob.education}}</td>
+                <td>{{ applyjob.location}}</td>
                 <td>{{ applyjob.email}}</td>
+
             </tr>
 
         {% endfor %}
-    </div>
     </table>
+    </div>
 </section>
 
 {% endblock %}
