@@ -2,21 +2,73 @@
 
 {% load crispy_forms_tags  %}
 
-{% block content %}
+{% block content %} 
 
-    <section class="site-section" id="next-section">
+<section class="home-section section-hero inner-page overlay bg-image">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-12">
+        <div class="mb-5 text-center">
+          <h1 class="text-white font-weight-bold">Job Application</h1>
+          <p>Choose any of the following fictional profile to view 
+            how the applicants are ranked with different ranking algorithms.  
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="site-section services-section bg-light block__62849" id="next-section">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
+
+        <a class="block__16443 text-center d-block">
+          <h3>Profile 1</h3>
+          <p>Elly, a 32-year old woman, lives in Arkley London, 
+            has a Bachelor’s degree in retail management with 4 years 
+            of retail management experiences in a leading national chain.</p>
+        </a>
+
+      </div>
+      <div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
+
+        <a class="block__16443 text-center d-block">
+          <h3>Profile 2</h3>
+          <p> Avik, a 35-year old man, lives in Kesington London, 
+            has a High School Diploma with 6 years of retail experiences 
+            and a recent promotion to a junior management role. 
+          </p>
+        </a>
+
+      </div>
+      <div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
+
+        <a class="block__16443 text-center d-block">
+          <h3>Profile 3</h3>
+          <p> Benson, a 60-year old man, lives in Oxford, 
+            has a A levels in business with extensive years of retail experiences, 
+            and is looking to relocate to the London area
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="site-section" id="next-section">
       <div class="container">
 
         <div class="row">
           <div class="col-lg-6 mb-5 mb-lg-0">
-            <center><h1 class="lead">Apply for this job And Check your Email</h1></center>
+            <center><h1 class="lead">Choose one of the fictional profile names below and click 'submit' </h1></center>
             <form action="" method="POST" class="">{% csrf_token %}
 
               {{ form|crispy }}
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <input type="submit" value="POST">
+                  <a href="{% url 'jobs:service' %}" class="btn btn-block btn-primary btn-md">SUBMIT</a>
                   {% if submitted %}
                     <p class="success">
                          Your application was submitted successfully. Thank you.
@@ -34,7 +86,7 @@
         </div>
 
       </div>
-    </section>
+</section>
 
 
 {% endblock %}

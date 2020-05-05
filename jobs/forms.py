@@ -8,6 +8,7 @@ class ContactForm(forms.ModelForm):
         fields = [
             'first_name',
             'last_name',
+            'username',
             'Email',
             'subject',
             'feedback'
@@ -27,6 +28,13 @@ class JobListingForm(forms.ModelForm):
 class JobApplyForm(forms.ModelForm):
     class Meta:
         model = ApplyJob
+        widgets ={
+            'image': forms.HiddenInput(),
+            'education': forms.HiddenInput(),
+            'experience': forms.HiddenInput(),
+            'location': forms.HiddenInput(),
+            'bio': forms.HiddenInput(),
+        }
         fields = [
-            'first_name', 'last_name', 'phone', 'email', 'web', 'education', 'experience', 'location', 'cv_file', 'resume'
+            'name', 'education', 'experience', 'location', 'image', 'bio'
         ]

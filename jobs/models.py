@@ -10,6 +10,7 @@ from django.utils import timezone
 class Contact(models.Model):
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
+    username = models.CharField(max_length=50, default='')
     Email = models.EmailField(blank=True)
     subject = models.CharField(max_length=100)
     feedback = models.TextField()
@@ -25,12 +26,13 @@ JOB_TYPE = (
 )
 
 CATEGORY = (
-    ('Web Design', 'Web Design'),
-    ('Graphic Design', 'Graphic Design'),
-    ('Web Developing', 'Web Developing'),
-    ('Software Engineering', 'Software Engineering'),
+    ('Retail', 'Retail'),
+    ('Banking', 'Banking'),
+    ('Security', 'Security'),
+    ('Transportation', 'Transportation'),
     ('HR', 'HR'),
     ('Marketing', 'Marketing'),
+    ('IT', 'IT'),
 )
 
 class JobListing(models.Model):
@@ -57,20 +59,20 @@ class JobListing(models.Model):
         return reverse("jobs:job-single", args=[self.id])
         
 EDUCATION_CHOICES = (
-    (40, 'PhD'),
-    (30, 'Master Degree'),
-    (20, 'Bachelor Degree'),
-    (10, 'Undergraduate'),
+    (40, 'Master Degree'),
+    (30, 'Bachelor Degree'),
+    (20, 'High School Diploma'),
+    (10, 'A Level'),
 )
 
 LOCATION_CHOICES = (
-    (70, '5 to 99 miles away'),
-    (60, '100 to 299 miles away'),
-    (50, '300 to 399 miles away'),
-    (40, '400 to 499 miles away'),
-    (30, '500 to 599 miles away'),
-    (20, '600 to 999 miles away'),
-    (10, '1000 and above miles away'),
+    (70, '5 to 10 miles away'),
+    (60, '11 to 20 miles away'),
+    (50, '21 to 30 miles away'),
+    (40, '31 to 40 miles away'),
+    (30, '41 to 50 miles away'),
+    (20, '51 to  and above miles away'),
+
 )
 
 EXPERIENCE_CHOICES = (
@@ -83,19 +85,23 @@ EXPERIENCE_CHOICES = (
 
 )
 
+NAME_CHOICES = (
+    ('E', 'Elly Morrison'),
+    ('A', 'Avik Amble'),
+    ('B', 'Benson Adebayo'),
+)
+
 class ApplyJob(models.Model):
-    first_name = models.CharField(max_length=100, default='')
-    last_name = models.CharField(max_length=100, default='')
-    phone = models.CharField(max_length=30, blank=True)
-    email = models.EmailField()
-    web = models.URLField(blank=True)
+    name = models.CharField(max_length=100, choices=NAME_CHOICES, default='')
     education = models.IntegerField(choices=EDUCATION_CHOICES, default='')
     experience = models.IntegerField(choices=EXPERIENCE_CHOICES, default='')
     location = models.IntegerField(choices=LOCATION_CHOICES, default='')
-    cv_file = models.FileField(upload_to='uploads/', blank=True)
-    resume = models.TextField(blank=True)
-
+    bio = models.TextField(max_length=200, blank=True, null=True)
+    image = models.ImageField(blank=True, upload_to='uploads/', null=True)
+    
+    
     def __str__(self):
-       return str(self.last_name)
+       return str(self.name)
+
 
 

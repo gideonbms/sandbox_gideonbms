@@ -36,7 +36,7 @@ def home(request):
 
 
 def about_us(request):
-    return render(request, "jobs/about_us.html", {})
+    return render(request, "jobs/experiment.html", {})
 
 
 
@@ -127,8 +127,6 @@ def apply_job(request):
 
     return render(request, "jobs/job_apply.html", {'form': form})
 
-
-
 class SearchView(ListView):
     model = JobListing
     template_name = 'jobs/search.html'
@@ -146,24 +144,6 @@ class ApplicantsListView(ListView):
     template_name = 'jobs/service/applyjob_list.html'
     context_object_name = 'all_applyjob'
     
-
-class ApplicantPerLocationView(ListView):
-    model = ApplyJob
-    template_name = 'jobs/service/applyjob_location.html'
-    context_object_name = 'all_applyjob'
-    queryset = ApplyJob.objects.order_by('-location', '-experience', '-education')
-
-class ApplicantPerEducationView(ListView):
-    model = ApplyJob
-    template_name = 'jobs/service/applyjob_education.html'
-    context_object_name = 'all_applyjob'
-    queryset = ApplyJob.objects.order_by('-education', '-experience', '-location')
-
-class ApplicantPerExperienceView(ListView):
-    model = ApplyJob
-    template_name = 'jobs/service/applyjob_experience.html'
-    context_object_name = 'all_applyjob'
-    queryset = ApplyJob.objects.order_by('-experience', '-education', '-location')
 
 
 
