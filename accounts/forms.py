@@ -6,7 +6,7 @@ User = get_user_model()
 
 
 class EmployeeRegistrationForm(forms.ModelForm):
-    username = forms.CharField(max_length=20)
+    username = forms.CharField(max_length=10)
     first_name = forms.CharField(required=False)
     last_name = forms.CharField(required=False)
     email = forms.EmailField(label='Email address', required=False)

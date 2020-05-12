@@ -4,21 +4,26 @@
 
 
 {% block content %}
-<section class="home-section section-hero inner-page overlay bg-image"
-      style="background-image: url('images/hero_1.jpg');" id="home-section">
-      <div class="container">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-md-12">
-            <div class="mb-5 text-center">
-
-                 <h2 class="text-white font-weight-bold">LOGIN</h2>
-
-
-            </div>
-          </div>
+<section class="home-section section-hero inner-page overlay bg-image" id="home-section">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-12">
+        <div class="mb-5 text-center">
+          <h1 class="text-white font-weight-bold">Algorithm Playground</h1> 
         </div>
+        <p>This platform offers a look behind the scene of e-recruitment websites and explain how job applicants
+          are ranked by e-recruitment algorithms.
+        </p>
+        <p> The platform is to develop to examine users’ perception of trust in e-recruitment 
+          algorithms and the impact such trust on their attitudes toward the algorithms.
+        </p>
+        <p>The platform also helps to analyse the impact of explanations on trust and willingness to use
+          e-recruitment platforms.  
+        </p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
 
     <section class="site-section" id="next-section">
@@ -26,7 +31,7 @@
         <div class="row">
 
           <div class="col-lg-6 mb-5 mb-lg-0">
-              <p>Already  have an account?</p>
+              <p>Log in with your username and password</p>
             <form action="" method="POST" >{% csrf_token %}
 
               {{ form|crispy}}
