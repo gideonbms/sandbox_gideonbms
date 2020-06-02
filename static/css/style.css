@@ -23,7 +23,7 @@
       color: #fff;
       font-size: 1.5rem;
       letter-spacing: .2rem;
-      text-transform: uppercase; }
+      text-transform: capitalize; }
       .site-navbar .site-logo a:hover {
         text-decoration: none; }
   .site-navbar .site-burger-menu, .site-navbar .right-cta-menu {

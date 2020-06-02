@@ -43,6 +43,19 @@ def about_us(request):
 def service(request):
     return render(request, "jobs/services.html", {})
 
+def serviceb(request):
+    return render(request, "jobs/serviceb.html", {})
+
+def servicec(request):
+    return render(request, "jobs/servicec.html", {})
+
+def feedback(request):
+    return render(request, "jobs/feedback.html", {})
+
+def thanks(request):
+    return render(request, "jobs/thanks.html", {})
+
+
 
 def contact(request):
     form = ContactForm(request.POST or None)

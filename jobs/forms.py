@@ -38,3 +38,4 @@ class JobApplyForm(forms.ModelForm):
         fields = [
             'name', 'education', 'experience', 'location', 'image', 'bio'
         ]
+

@@ -3,53 +3,122 @@
 
 
 {% block content %}
+  <!-- HOME -->
+    <section class="home-section section-hero inner-page overlay bg-image"  style="background-image: url('{{ STATIC_URL }}/imgages/good.jpg');" id="home-section">
 
-<section class="home-section section-hero inner-page overlay bg-image" id="home-section">
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-12">
             <div class="mb-5 text-center">
-              <h1 class="text-white font-weight-bold">E-Recruitment Systems</h1> 
+              <h1 class="text-white font-weight-bold">Algorithm Playground </h1>
+              <p>An experimental platform to explore e-recruitment algorithms </p>
             </div>
-            <p>An e-recruitment system is a web-based tool that automates recruiting processes such as publishing
-               job positions, receiving job applicants' CVs, applicants' pre-screening, ranking and selection among
-               others. Existing e-recruitment systems use keywords or faceted searches 
-               to provide better search results to different categories of users (including recruiters, job seekers,
-                hiring agency etc.).
-            </p>
-            <p> An e-recruitment system as a web-based tool is a merge of algorithms that automates the 
-              different requirements of the system. These algorithms take specific inputs from different 
-              categories of users to generate results. For instance, a recruiter can provide specific inputs 
-              (such as the required experience and education level
-              etc) to the algorithms to rank candidates for an advertised job position. 
-            </p>
-            <p>Generally, e-recruitment systems use several algorithms such as recommender, prediction, 
-              semantic matching and filtering algorithms among others. For instance, filtering algorithms
-              use applicants' personality traits to rank applicants for a job position. The inputs for a filtering
-              algorithm are usually specified by recruiters.
-            </p>
-            <p>
-              This experiment is aimed at investigating factors and features that may 
-              affect users’ perceptions of trust in e-recruitment algorithms.
+            <form id="job-main-form" method="get" action="{% url 'jobs:search' %}" class="search-jobs-form">
+              <div class="row mb-5">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                   <input type="text"  id="title" name="title" class="form-control form-control-lg" placeholder=" Software Engineer ... ">
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                   <input    type="text" id="job_location" name="job_location" class="form-control form-control-lg" placeholder="Oxford">
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                  <select id="employment_status" name="employment_status" class="form-control">
+                    <option>Part Time</option>
+                    <option>Full Time</option>
+                    <option>Freelance</option>
+                  </select>
+                </div>
+
+
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search Job</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+    <section class="py-5 bg-image overlay-primary fixed overlay" id="next-section">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-md-7 text-center">
+            <h3 class="text-white font-weight-bold" >Task C : Engaging E-recruitment Algorithms</h3>
+            <p class="mb-0 text-white lead"> 
+              <ol>
+                <li class="mb-0 text-white lead" >In the search text-boxes above, search for a job title 'sales manager',
+                    location 'London', choose 'full time' and click 'Search Job'
+                </li>
+                <li class="mb-0 text-white lead" >In the list of job adverts provided, click the job title 
+                  ' Retail sales manager', a job from CIDL to view the job summary and description
+              </li>
+              </ol>
             </p>
           </div>
         </div>
       </div>
-    </section>
-    <section class="py-5 bg-image overlay-primary fixed overlay" id="next-section">
-        <div class="container">
-          <div class="row mb-5 justify-content-center">
-            <div class="col-md-7 text-center">
-              <p class="mb-0 text-white lead">The data collected in this experiment are entirely anonymous. 
-                  We need your feedback on different aspects of the tool. So, 
-                  we require your personal opinions. For the task where you need to 
-                  complete a job application, we provide a fictional profile to be used. 
-                  At the end of the experiment, click 'feedback' tab to provide your personal feedback on the experiment.
-              </p>
-            </div>
-          </div>
-        </div>
-    </section>
+  </section>
+    
+  <section class="site-section">
+    <div class="container">
 
 
+
+       <div class="mb-5">
+            {% for q in query %}
+
+         <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
+           <div class="col-md-2">
+             <a href="#"><img src="{% static 'images/featured-listing-1.jpg' %}" alt="Image" class="img-fluid"></a>
+           </div>
+           <div class="col-md-4">
+             <span class="badge badge-primary px-2 py-1 mb-3">
+
+                   {{ q.employment_status }}
+
+             </span>
+             <h2><a href="{% url 'jobs:job-single' q.id %}">{{ q.title }}</a> </h2>
+             <p class="meta">Publisher: <strong>{{ q.user.first_name }} {{ q.user.last_name }}</strong> In: <strong>{{ q.category }}</strong></p>
+           </div>
+           <div class="col-md-3 text-left">
+             <h3>{{ q.job_location }}</h3>
+             <span class="meta"></span>
+           </div>
+           <div class="col-md-3 text-md-right">
+             <strong class="text-black">{{ q.Salary }}</strong>
+           </div>
+         </div>
+
+{% endfor %}
+       </div>
+
+
+
+       <div class="row pagination-wrap">
+
+         <div class="col-md-6 text-center text-md-left">
+           <div class="custom-pagination ml-auto">
+             {% if query.has_previous %}
+             <a  href="?page={{ query.previous_page_number }}" class="prev">Previous</a>
+             {% endif %}
+             <div class="d-inline-block">
+               Page <a href="#" class="active">{{ query.number }}</a> of  {{ query.paginator.num_pages }}
+
+
+             </div>
+             {% if query.has_next %}
+             <a href="?page={{ query.next_page_number }}" class="next">Next</a>
+              {% endif %}
+           </div>
+         </div>
+       </div>
+
+     </div>
+   </section>
+
+
+    
 {% endblock %}

@@ -5,17 +5,16 @@
 <header class="site-navbar mt-3">
   <div class="container-fluid">
     <div class="row align-items-center">
-      <div class="site-logo col-6"><a href="{% url 'home' %}">Re-entrust Project</a></div>
+      <div class="site-logo col-6"><a href="{% url 'home' %}">ReEnTrust Project</a></div>
 
       <nav class="mx-auto site-navigation">
         <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
           <li><a href="{% url 'home' %}" class="nav-link active">Home</a></li>
-          <li><a href="{% url 'jobs:experiment' %}">Experiment</a></li>
-          <li><a href="{% url 'jobs:contact' %}">Feedback</a></li>
-         
-
-
+          <li class="d-lg-none"><a href="#">Experiment</a></li>
+          <li><a href="{% url 'jobs:contact' %}">Contact us</a></li>
           <li class="d-lg-none"><a href="#">Contact Us</a></li>
+          <li class="d-lg-none"><a href="#">survey</a></li>
+
         </ul>
       </nav>
 {% if user.is_authenticated %}

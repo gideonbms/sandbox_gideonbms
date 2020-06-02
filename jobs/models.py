@@ -105,3 +105,7 @@ class ApplyJob(models.Model):
 
 
 
+
+
+
+

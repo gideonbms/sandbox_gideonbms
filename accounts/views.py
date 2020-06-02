@@ -35,7 +35,7 @@ def employee_login(request):
             if user.is_active:
                 request.session.set_expiry(420)
                 login(request, user)
-                return redirect('/')
+                return redirect('jobs:experiment')
     context = {
         'form': form
     }
