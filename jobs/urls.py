@@ -18,6 +18,9 @@ urlpatterns = [
     path('servicec/', servicec, name='servicec'),
     path('feedback/', feedback, name='feedback'),
     path('thanks/', thanks, name='thanks'),
+    path('login/', logform, name='login'),
+    path('jobs/login', logform, name='login'),
+    
 
 
       

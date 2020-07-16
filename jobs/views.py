@@ -157,7 +157,16 @@ class ApplicantsListView(ListView):
     template_name = 'jobs/service/applyjob_list.html'
     context_object_name = 'all_applyjob'
     
-
+def logform(request):
+    form = LogForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save()
+        instance.save()
+        return redirect('jobs:experiment')
+    context = {
+        'form': form
+    }
+    return render(request, "jobs/login.html", context)
 
 
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, get_user_model, login, logout
-from .forms import EmployeeRegistrationForm, EmployeeLoginForm
+from .forms import EmployeeRegistrationForm
 
 
 def signup(request):
@@ -24,24 +24,18 @@ def signup(request):
     return render(request, "accounts/employee_signup.html", context)
 
 
-def employee_login(request):
-    next = request.GET.get('next')
-    form = EmployeeLoginForm(request.POST or None)
-    if form.is_valid():
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password')
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                request.session.set_expiry(420)
-                login(request, user)
-                return redirect('jobs:experiment')
-    context = {
-        'form': form
-    }
-    return render(request, "accounts/login.html", context)
-
 
 def logout_view(request):
     logout(request)
     return redirect('accounts:login')
+
+def logform(request):
+    form = LogForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save()
+        instance.save()
+        return redirect('jobs:experiment')
+    context = {
+        'form': form
+    }
+    return render(request, "accounts/login.html", context)

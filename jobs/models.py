@@ -4,8 +4,13 @@ from django.conf import settings
 from django.utils import timezone
 #from accounts.models import User
 
+class UserLog(models.Model):
+    
+    passcode = models.CharField(max_length=50, default='')
+    
 
-
+    def __str__(self):
+        return self.passcode
 
 class Contact(models.Model):
     first_name = models.CharField(max_length=100, blank=True)

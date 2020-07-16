@@ -39,3 +39,9 @@ class JobApplyForm(forms.ModelForm):
             'name', 'education', 'experience', 'location', 'image', 'bio'
         ]
 
+class LogForm(forms.ModelForm):
+    class Meta:
+        model = UserLog
+        fields = [
+            'passcode',
+        ]

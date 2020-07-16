@@ -22,12 +22,13 @@
   <div class="container">
     <div class="row mb-5 justify-content-center">
       <div class="col-md-7 text-center">
-        <h3 class="text-white font-weight-bold" >Task D : Choosing a Fictional Job Applicant</h3>
+        <h3 class="text-white font-weight-bold" >Task 4 : Choosing a Fictional Job Applicant</h3>
         <p class="mb-0 text-white lead"> 
-          <ol>
-            <li class="mb-0 text-white lead" >In the text-box below, choose any of the fictional job applicants
+          <ol type="A">
+            <li class="mb-0 text-white lead" >Based on the job advert you read, 
+              choose your preferred fictional job applicant that fits the role 
             </li>
-            <li class="mb-0 text-white lead" >Click 'SUBMIT' to view how each applicant is 
+            <li class="mb-0 text-white lead" >Click 'CONTINUE' to view how each applicant is 
               ranked by the candidates' ranking algorithms
             </li>
           </ol>
@@ -77,30 +78,29 @@
 
         <div class="row">
           <div class="col-lg-6 mb-5 mb-lg-0">
-            <center><h1 class="lead">Choose one of the fictional profile names below and click 'submit' </h1></center>
-            <form action="" method="POST" class="">{% csrf_token %}
-
-              {{ form|crispy }}
-
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <a href="{% url 'jobs:service' %}" class="btn btn-block btn-primary btn-md">SUBMIT</a>
-                  {% if submitted %}
-                    <p class="success">
-                         Your application was submitted successfully. Thank you.
-                    </p>
-                  {% endif %}
-
-                </div>
-              </div>
-
-            </form>
+            <a name="form1105775672" id="formAnchor1105775672"></a>
+            <script src="https://fs11.formsite.com/include/form/embedManager.js?1105775672"></script>
+            <script>
+              EmbedManager.embed({
+	            key: "https://fs11.formsite.com/res/showFormEmbed?EParam=B6fiTn-RcO5pym5fHG477EFZTwlB5vVc&1105775672",
+	            width: "100%"
+              });
+            </script>
           </div>
 
 
 
         </div>
 
+  </div>
+</section>
+<section class="py-5 bg-image overlay-primary fixed overlay" >
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-3 ml-auto">
+        <a href="{% url 'jobs:service' %}" class="btn btn-warning btn-block btn-lg">CONTINUE</a>
+      </div>
+    </div>
   </div>
 </section>
 

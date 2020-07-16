@@ -8,4 +8,5 @@ class ApplyJobAdmin(admin.ModelAdmin):
 admin.site.register(Contact)
 admin.site.register(JobListing)
 admin.site.register(ApplyJob, ApplyJobAdmin)
+admin.site.register(UserLog)
 

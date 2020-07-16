@@ -11,8 +11,8 @@
         <div class="mb-5 text-center">
           <h1 class="text-white font-weight-bold">Algorithm Playground</h1> 
         </div>
-        <p>This platform offers a look behind the scene of e-recruitment websites and explain how job applicants
-          are ranked by e-recruitment algorithms.
+        <p>Our platform is called <i> Algorithm Playground</i>. This platform offers a look behind the scene of
+           e-recruitment websites and explain how job applicants are ranked by e-recruitment algorithms.
         </p>
         <p> The platform is developed to examine users’ perception of trust in e-recruitment 
           algorithms and the impact such trust on their attitudes toward the algorithms.
@@ -28,12 +28,12 @@
   <div class="container">
     <div class="row mb-5 justify-content-center">
       <div class="col-md-7 text-center">
-        <h3 class="text-white font-weight-bold" >Task B : Registration</h3>
+        <h3 class="text-white font-weight-bold" >Task 2 : Registration</h3>
         <p class="mb-0 text-white lead"> 
-          <ol>
-            <li class="mb-0 text-white lead" >Read through the introductory explanations on Algorithm Playground</li>
-            <li class="mb-0 text-white lead" >Complete the introductory survey below and submit</li>
-            <li class="mb-0 text-white lead" >Enter the username and password you are given in the login text boxes below</li>
+          <ol type="A">
+            <li class="mb-0 text-white lead" >Read through the above introductory explanations on Algorithm Playground</li>
+            <li class="mb-0 text-white lead" >Complete the introductory survey below and click submit</li>
+            <li class="mb-0 text-white lead" >Enter the passcode you are given in the passcode text box below</li>
             <li class="mb-0 text-white lead">Click Login to proceed to the next page of the experiment</li>
           </ol>
         </p>
@@ -50,29 +50,31 @@
   });
 </script>
 <section class="site-section" id="next-section">
-      <div class="container">
-        <div class="row">
+  <div class="container">
+    <div class="row">
 
-          <div class="col-lg-6 mb-5 mb-lg-0">
-              <p>Log in with your username and password</p>
-            <form action="" method="POST" >{% csrf_token %}
+      <div class="col-lg-6 mb-5 mb-lg-0">
+          <p>Log in with your passcode </p>
+        <form action="" method="POST" >{% csrf_token %}
 
-              {{ form|crispy}}
+          {{ form|crispy}}
 
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <input type="submit" value="Login" class="btn btn-primary btn-md text-white">
-
-                </div>
-              </div>
-
-
-            </form>
+          <div class="row form-group">
+            <div class="col-md-12">
+              <input type="submit" value="Login" class="btn btn-primary btn-md text-white">
+            </div>
           </div>
+
+
+        </form>
+      </div>
+      <div class="col-lg-5 ml-auto">
+        <div class="p-4 mb-3 bg-white">
 
         </div>
       </div>
-  </section>
-
+    </div>
+  </div>
+</section>
 
 {% endblock %}
