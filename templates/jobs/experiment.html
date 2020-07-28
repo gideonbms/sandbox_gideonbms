@@ -52,9 +52,6 @@
                 <li class="mb-0 text-white lead" >In the search text-boxes above, search for a job title 'sales manager',
                     location 'London', choose 'full time' and click 'Search Job'
                 </li>
-                <li class="mb-0 text-white lead" >In the list of job adverts provided, click the job title 
-                  ' Retail sales manager', a job from CIDL to read the job summary and description
-              </li>
               </ol>
             </p>
           </div>
@@ -118,7 +115,15 @@
 
      </div>
    </section>
-
+   <section class="py-5 bg-image overlay-primary fixed overlay" >
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-2 ml-auto">
+          <a href="{% url 'jobs:login' %}" class="btn btn-warning btn-block btn-lg">BACK</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
     
 {% endblock %}

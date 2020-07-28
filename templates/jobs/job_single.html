@@ -15,7 +15,8 @@
         <div class="row">
           <div class="col-md-7">
             <h1 class="text-white font-weight-bold">{{ q.title }}</h1>
-            <h3 class="mb-0 text-white lead">Click 'Choose Applicant' to see the list of fictional job profiles
+            <h3 class="mb-0 text-white lead">Read carefully the job description and responbilities and 
+              click 'Choose Applicant' to see the list of fictional job profiles
               for the advertised job position.</h3>
           </div>
         </div>
@@ -94,7 +95,6 @@
                 <li class="mb-2"><strong class="text-black">Experience:</strong> {{ q.experience }}</li>
                 <li class="mb-2"><strong class="text-black">Job Location:</strong> {{ q.job_location }}</li>
                 <li class="mb-2"><strong class="text-black">Salary:</strong> {{ q.Salary }}</li>
-                <li class="mb-2"><strong class="text-black">Gender:</strong> {{ q.gender }}</li>
                 <li class="mb-2"><strong class="text-black">Application Deadline:</strong> {{ q.application_deadline }}</li>
               </ul>
             </div>
@@ -113,7 +113,15 @@
         </div>
       </div>
     </section>
-    
+    <section class="py-5 bg-image overlay-primary fixed overlay" >
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-2 ml-auto">
+            <a href="{% url 'jobs:experiment' %}" class="btn btn-warning btn-block btn-lg">BACK</a>
+          </div>
+        </div>
+      </div>
+    </section>
   
 
 
